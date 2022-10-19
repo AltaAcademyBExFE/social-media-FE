@@ -5,7 +5,7 @@ import Feed from "../Component/Feed";
 
 const Homepage = () => {
   return (
-    <div className="container pt-10 ">
+    <div className="container pt-[7rem] ">
       <div className="lg:flex justify-items-center">
         <div className="status space-y-5 mb-4">
           <CreatePost />
