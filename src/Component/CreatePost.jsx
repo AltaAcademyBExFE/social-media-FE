@@ -15,6 +15,7 @@ const CreatePost = () => {
             className="h-[5rem] clip-path "
           />
           <input
+            id=""
             type="text"
             placeholder="Share your thoughts"
             className="w-full h-[3.5rem] px-3 text-base bg-abu-50 rounded-md placeholder-abu-100 focus:outline-none "

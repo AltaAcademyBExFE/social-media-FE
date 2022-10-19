@@ -75,6 +75,7 @@ const Feed = () => {
         {!comment ? (
           <div className="flex">
             <input
+              id=""
               type="text"
               placeholder="comment here"
               className="w-[75%] h-[3rem] px-3 text-sm bg-abu-50 rounded-lg placeholder-abu-100 focus:outline-none border border-abu-120"
