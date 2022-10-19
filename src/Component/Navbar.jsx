@@ -2,7 +2,7 @@ import React from "react";
 import { CiSearch } from "react-icons/ci";
 export const Navbar = () => {
   return (
-    <div className=" px-[4rem] bg-abu-100 sticky">
+    <div className="px-[4rem] bg-abu-100 ">
       <h1>SocialUp</h1>
       {/* <input
         type="text"
