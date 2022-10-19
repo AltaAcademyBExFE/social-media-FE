@@ -68,3 +68,14 @@ code {
   );
 }
 
+.header {
+  position: fixed;
+  z-index: 30;
+  transition: 0.3s ease-in;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+}
+.header-bg {
+  box-shadow: 12px 7px 17px rgba(0, 0, 0, 0.11);
+}
