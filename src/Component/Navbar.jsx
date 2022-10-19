@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { CiSearch } from "react-icons/ci";
 import { AiOutlineLogout, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BiSun } from "react-icons/bi";
+import { Link } from "react-router-dom";
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState(false);
@@ -19,7 +20,11 @@ export const Navbar = () => {
   return (
     <div className={color ? "header header-bg  w-full" : "header  w-full"}>
       <div className="px-4 lg:px-[4rem] bg-abu-10 h-[5rem] items-center flex justify-between ">
-        <h1 className="text-xl font-bold lg:text-3xl text-biru-50">SocialUp</h1>
+        <Link to="/">
+          <h1 className="text-xl font-bold lg:text-3xl text-biru-50">
+            SocialUp
+          </h1>
+        </Link>
         <input
           type="text"
           placeholder="Search"
@@ -31,12 +36,15 @@ export const Navbar = () => {
             alt="profile"
             className="h-[3rem] clip-path "
           />
-          <h1 className="text-base font-semibold text-hitam-50 ml-2">
-            Jack Geraliish
-          </h1>
+          <Link to="/profile">
+            <h1 className="text-base font-semibold text-hitam-50 ml-2 cursor-pointer">
+              Jack Geraliish
+            </h1>
+          </Link>
+
           <div className="flex items-center ml-[2rem] space-x-5">
-            <AiOutlineLogout />
             <BiSun />
+            <AiOutlineLogout />
           </div>
         </div>
 
