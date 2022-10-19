@@ -25,7 +25,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 .gradasi-button {
   background: linear-gradient(
     90.22deg,
@@ -68,3 +67,4 @@ code {
     rgba(97, 193, 199, 0.67) 99.81%
   );
 }
+
