@@ -18,6 +18,10 @@ module.exports = {
       hitam: {
         50: "#282727",
       },
+      "SocialUp" : "#8CD6DB",
+        "Grey" : "#999999",
+        "Linear" : "#5AB0B6",
+        "account" : "#2B79C0",
     },
   },
   plugins: [],
