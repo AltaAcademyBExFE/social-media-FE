@@ -26,6 +26,14 @@ code {
     monospace;
 }
 
+.gradasi-button {
+  background: linear-gradient(
+    90.22deg,
+    #5ab0b6 0.11%,
+    #65ccd2 54.75%,
+    rgba(97, 193, 199, 0.67) 99.81%
+  );
+}
 .clip-path {
   clip-path: circle(40%);
 }
@@ -52,6 +60,11 @@ code {
   );
 }
 
-.gradasi-button{
-  background: linear-gradient(90.22deg, #5AB0B6 0.11%, #65CCD2 54.75%, rgba(97, 193, 199, 0.67) 99.81%);;
+.gradasi-button {
+  background: linear-gradient(
+    90.22deg,
+    #5ab0b6 0.11%,
+    #65ccd2 54.75%,
+    rgba(97, 193, 199, 0.67) 99.81%
+  );
 }
