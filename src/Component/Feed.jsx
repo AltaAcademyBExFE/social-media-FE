@@ -3,10 +3,31 @@ import { FiSend } from "react-icons/fi";
 import { SlOptionsVertical } from "react-icons/sl";
 import { FaRegComment } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
-const Feed = () => {
+import axios from "axios";
+const Feed = ({ id_post, comments }) => {
   const [burger, setBurger] = useState(true);
   const [comment, setComment] = useState(true);
+  const [addKomen, setAddkomen] = useState("");
+  const [body, setBody] = useState("");
 
+  const addedComment = (e) => {
+    e.preventDefault();
+    const bodyComment = {
+      body,
+      id_post,
+    };
+    axios
+      .post(
+        "https://virtserver.swaggerhub.com/ALTA-Sosmed/openapi-alta-sosmed/1.0.0/comments",
+        bodyComment
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   const handlecomment = () => {
     setComment(!comment);
   };
@@ -14,7 +35,7 @@ const Feed = () => {
     setBurger(!burger);
   };
   return (
-    <div className="w-[95%]  md:w-[42rem] h-auto box-card px-7 py-5">
+    <div className="w-[95%] md:w-[42rem] h-auto box-card px-7 py-5">
       <div className="flex justify-between ">
         <div className="flex items-center ">
           <img
@@ -73,8 +94,10 @@ const Feed = () => {
         </div>
 
         {!comment ? (
-          <div className="flex">
+          <form className="flex" onSubmit={addedComment}>
             <input
+              value={addKomen}
+              onChange={(e) => setAddkomen(e.target.value)}
               id=""
               type="text"
               placeholder="comment here"
@@ -83,7 +106,7 @@ const Feed = () => {
             <div className=" flex items-center  ml-5">
               <FiSend className="bg-abu-100 text-abu-50" size={30} />
             </div>
-          </div>
+          </form>
         ) : null}
       </div>
 
