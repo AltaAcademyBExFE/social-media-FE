@@ -1,12 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Jalan from "../assets/Jalan.jpg";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { handleAuth } from "../utils/redux/reducers/reducer";
+import { useDispatch } from "react-redux";
 
 function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [passwordShown, setPasswordShown] = useState(false);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [disable, setDisable] = useState(true);
+
+  useEffect(() => {
+    if (email && password) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [email, password]);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
+  const handleSubmit = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const body = {
+      email,
+      password,
+    };
+    // console.log(body);
+    axios
+      .post("login", body)
+      .then((res) => {
+        const { data, message } = res.data;
+        localStorage.setItem("token", data.token);
+        dispatch(handleAuth(true));
+        alert(message);
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err.toString());
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <div className="flex flex-col md:flex-row lg:flex-row gap-18 p-20">
@@ -21,34 +66,44 @@ function Login() {
             nibh <br /> tortor lorem ipsum
           </p>
           <br />
-          <p className="font-bold">Email address</p>
-          <input
-            className="mt-1 px-3 py-2 bg-white border shadow-sm border-SocialUp placeholder-Grey w-[500px] h-[50px] rounded-md"
-            placeholder="contohemail@gmail.com"
-            type="email"
-            name="contohemail@gmail.com"
-            id=""
-          />
           <br />
-          <p className="font-bold">Password</p>
-          <input
-            className="mt-1 px-3 py-2 bg-white border shadow-sm border-SocialUp placeholder-Grey w-[500px] h-[50px] rounded-md"
-            type={passwordShown ? "text" : "password"}
-            placeholder="Masukkan Password"
-          />
-          <button onClick={togglePassword}></button>
-          <br />
-          <h1 className="mt-1 px-3 py-2 gradasi-button border shadow-sm text-white text-center w-[500px] h-[50px] rounded-md">
-            Sing in
-          </h1>
-          {/* <div className="grid grid-cols-2 md:grid-rows-2 lg:grid-rows-2 gap-1 mt-1 px-3 py-2 bg-white border-0 text-black text-center w-1/3">
-          <h3 className="grid grid-cols-1 text-right">Not Registered yet ? </h3>
-          <h3 className="text-account grid grid-cols-1 text-left">
-            Create a new account
-          </h3>
-        </div> */}
+          <form onSubmit={handleSubmit}>
+            <p className="font-bold">Email address</p>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 px-3 py-2 bg-white border shadow-sm border-SocialUp placeholder-Grey w-[500px] h-[50px] rounded-md"
+              placeholder="contohemail@gmail.com"
+              type="email"
+              id=""
+            />
+            <br />
+            <br />
+            <p className="font-bold">Password</p>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 px-3 py-2 bg-white border shadow-sm border-SocialUp placeholder-Grey w-[500px] h-[50px] rounded-md"
+              type={passwordShown ? "text" : "password"}
+              placeholder="Masukkan Password"
+            />
+            <button onClick={togglePassword}></button>
+            <br />
+            <br />
+            <div>
+              <button
+                disabled={disable}
+                type="submit"
+                // loading={loading || disabled}
+                className="mt-1 px-3 py-2 gradasi-button border shadow-sm text-white text-center w-[500px] h-[50px] rounded-md"
+              >
+                Sign in
+              </button>
+            </div>
+          </form>
           <p className="text-center">
-            Not Register yet? {"Create a new account"}
+            Not Register yet?{" "}
+            <Link className="text-blue-900" to="/register">
+              Create a new account
+            </Link>
           </p>
         </div>
         <div className="flex flex-col md:flex-row m-24 lg:flex-row w-[300px]">
