@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { BsCardImage } from "react-icons/bs";
+import axios from "axios";
+
 const CreatePost = () => {
+  // const [caption, setCaption] = useState("");
+
+  // const handleSubmit =(e)=>{
+  //   e.prevenDefault()
+  //   const body = {
+  //     bodyy,
+  //     images,
+  //     name_user,
+  //     name_user,
+  //     created_at,
+  //   };
+  //   axios.post(
+  //     "https://virtserver.swaggerhub.com/ALTA-Sosmed/openapi-alta-sosmed/1.0.0/posts",body
+  //   ).then((res)=>{
+  //     res
+  //   })
+  // }
   return (
     <>
       <h1 className="font-bold text-2xl text-hitam-50 mb-5">
@@ -14,11 +33,11 @@ const CreatePost = () => {
             alt="profile"
             className="h-[5rem] clip-path "
           />
-          <input
+          <textarea
             id=""
             type="text"
             placeholder="Share your thoughts"
-            className="w-full h-[3.5rem] px-3 text-base bg-abu-50 rounded-md placeholder-abu-100 focus:outline-none "
+            className="w-full h-[3.5rem] px-3 text-sm pt-2 bg-abu-50 rounded-md placeholder-abu-100 focus:outline-none "
           />
         </div>
         <div className="flex items-center justify-evenly mt-8 ">
