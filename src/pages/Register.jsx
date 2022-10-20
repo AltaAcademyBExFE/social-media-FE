@@ -43,8 +43,8 @@ function Register() {
         const { Message, Data } = res.data;
         // console.log(res);
         if (Data) {
-          console.log(Data);
-          navigate("/login");
+          // console.log(Data);
+          navigate("/");
         }
         alert(Message);
       })
@@ -125,7 +125,7 @@ function Register() {
             </button>
           </form>
           <p className="text-center">
-            Already Have An Account? {""} <Link to="/login">Login Here</Link>
+            Already Have An Account? {""} <Link to="/">Login Here</Link>
           </p>
         </div>
         <div className="flex flex-col md:flex-col lg:flex-col justify-center w-[34rem]">

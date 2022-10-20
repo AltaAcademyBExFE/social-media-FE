@@ -43,10 +43,10 @@ function Login() {
         localStorage.setItem("token", Data.Token);
         dispatch(handleAuth(true));
         alert(Message);
-        navigate("/");
+        navigate("/homepage");
       })
       .catch((err) => {
-        alert(err.toString());
+        alert("Please Register First");
       })
       .finally(() => {
         setLoading(false);
