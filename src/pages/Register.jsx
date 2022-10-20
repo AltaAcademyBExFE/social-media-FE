@@ -40,12 +40,13 @@ function Register() {
     axios
       .post("register", body)
       .then((res) => {
-        const { message, data } = res.data;
+        const { Message, Data } = res.data;
         // console.log(res);
-        if (data) {
+        if (Data) {
+          console.log(Data);
           navigate("/login");
         }
-        alert(message);
+        alert(Message);
       })
       .catch((err) => {
         alert(err.toString());
@@ -124,7 +125,7 @@ function Register() {
             </button>
           </form>
           <p className="text-center">
-            Already Have An Account? {""} <Link to="/login">Register Here</Link>
+            Already Have An Account? {""} <Link to="/login">Login Here</Link>
           </p>
         </div>
         <div className="flex flex-col md:flex-col lg:flex-col justify-center w-[34rem]">

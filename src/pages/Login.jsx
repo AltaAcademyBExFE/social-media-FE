@@ -38,10 +38,11 @@ function Login() {
     axios
       .post("login", body)
       .then((res) => {
-        const { data, message } = res.data;
-        localStorage.setItem("token", data.token);
+        const { Data, Message } = res.data;
+        // console.log(res);
+        localStorage.setItem("token", Data.Token);
         dispatch(handleAuth(true));
-        alert(message);
+        alert(Message);
         navigate("/");
       })
       .catch((err) => {
