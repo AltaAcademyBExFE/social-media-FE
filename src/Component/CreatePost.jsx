@@ -6,7 +6,7 @@ import { BsCardImage } from "react-icons/bs";
 import { setStatus } from "../utils/redux/reducers/reducer";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+
 
 const CreatePost = () => {
 
@@ -63,28 +63,7 @@ const CreatePost = () => {
       })
       .finally();
 
-  const dispatch = useDispatch();
-  const [messages, setMessages] = useState();
-  const [disable, setDisable] = useState();
-
-  useEffect(() => {
-    if (messages) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-  }, [messages]);
-
-  const handleSubmit = async (e) => {
-    const getStatus = localStorage.getItem("statusUser");
-    e.preventDefault();
-    const body = {
-      message: messages,
-    };
-
-    axios.post("posts", body).then((res) => {});
-
-  };
+  
 
   return (
     <>
@@ -123,5 +102,5 @@ const CreatePost = () => {
     </>
   );
 };
-
+}
 export default CreatePost;
