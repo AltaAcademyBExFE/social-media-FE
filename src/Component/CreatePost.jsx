@@ -1,11 +1,15 @@
+
 import React, { useEffect, useState } from "react";
+
 import { FiSend } from "react-icons/fi";
 import { BsCardImage } from "react-icons/bs";
 import { setStatus } from "../utils/redux/reducers/reducer";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
 const CreatePost = () => {
+
   const Users = useSelector((state) => state.data.Users);
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
@@ -58,6 +62,28 @@ const CreatePost = () => {
         alert(message);
       })
       .finally();
+
+  const dispatch = useDispatch();
+  const [messages, setMessages] = useState();
+  const [disable, setDisable] = useState();
+
+  useEffect(() => {
+    if (messages) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [messages]);
+
+  const handleSubmit = async (e) => {
+    const getStatus = localStorage.getItem("statusUser");
+    e.preventDefault();
+    const body = {
+      message: messages,
+    };
+
+    axios.post("posts", body).then((res) => {});
+
   };
 
   return (
