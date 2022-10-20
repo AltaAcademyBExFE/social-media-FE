@@ -1,14 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { Navbar } from "../Component/Navbar";
+
 import Homepage from "../pages/Homepage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 
-
-axios.defaults.baseURL =
-  "https://virtserver.swaggerhub.com/ALTA-Sosmed/openapi-alta-sosmed/1.0.0/";
+axios.defaults.baseURL = "http://18.143.118.96:8000";
 function App() {
   return (
     <BrowserRouter>
